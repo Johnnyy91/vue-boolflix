@@ -2,14 +2,20 @@
   <header>
     <div></div>
     <div class="searchNavigation">
-        <input type="text" placeholder="Search Movies">
+        <input type="text" placeholder="Search Movies" v-model="insertText">
+        <button @click="$emit('textToSearch', insertText)">Search</button>
     </div>
   </header>
 </template>
 
 <script>
 export default {
-name : 'HeaderComponent'
+name : 'HeaderComponent',
+data(){
+    return{
+        insertText : '',
+    }
+}
 }
 </script>
 
