@@ -33,6 +33,7 @@ data(){
       axios
         .get(`https://api.themoviedb.org/3/search/movie?api_key=4f84838e7f72cd5486a3c0f5685cf054&language=it-IT&query=${this.resultInput}&page=1&include_adult=false`)
         .then((response) => {
+          console.log('movie' , response)
           console.log('movie',response.data.results)
           this.ArrayMovies = response.data.results
         })
@@ -50,5 +51,12 @@ data(){
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 </style>

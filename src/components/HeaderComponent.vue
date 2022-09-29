@@ -32,7 +32,8 @@ data(){
   align-items: center;
   h1{
     color: red;
-    padding: 0 15px;
+    padding: 15px;
+    font-size: 3rem;
   };
   input{
     border: none;

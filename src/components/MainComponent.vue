@@ -10,13 +10,11 @@
           <p class="flag-img"> LANGUAGE:
             <img :src="viewFlag(movie.original_language)" alt="movie">
           </p>
-          <div>VOTE:
-            <i v-for="star in 5" :key="star" class="fa-star"
+          <div>VOTE: <i v-for="star in 5" :key="star" class="fa-star"
               :class="changeVote(movie.vote_average) >= star? 'fa-solid':'fa-regular'">
             </i>
           </div>
          </div>
-         
         </div>
      </div>
 
@@ -24,15 +22,16 @@
       <div class="card-container">
         <div v-for="serie in serieTv" :key="serie.id" class="card">
          <img :src="`http://image.tmdb.org/t/p/w342/${serie.poster_path}`" alt="serieTv" class="poster-img">
-         <h4>TITLE: {{serie.name}}</h4>
-         <h5>ORIGINAL TITLE: {{serie.original_name}}</h5>
-         <p class="flag-img">LANGUAGE: 
-          <img :src="viewFlag(serie.original_language)" alt="">
-         </p>
-         <div>VOTE: 
-           <i v-for="star in 5" :key="star" class="fa-star"
+         <div class="text-information">
+          <h4>TITLE: {{serie.name}}</h4>
+          <h5>ORIGINAL TITLE: {{serie.original_name}}</h5>
+          <p class="flag-img">LANGUAGE:
+            <img :src="viewFlag(serie.original_language)" alt="">
+          </p>
+          <div>VOTE: <i v-for="star in 5" :key="star" class="fa-star"
               :class="changeVote(serie.vote_average) >= star? 'fa-solid':'fa-regular'">
-           </i>
+            </i>
+          </div>
          </div>
        </div>
      </div>
@@ -74,8 +73,15 @@ main{
     color: white;
 }
 
+h2{
+  color: red;
+  font-size: 2rem;
+  padding: 20px;
+}
+
 .flag-img{
   width: 20px;
+  display: flex;
 }
 
 h4{
@@ -94,24 +100,33 @@ h4{
   padding: 20px;
   margin: 10px;
   position: relative;
+  &.card:hover .text-information{
+    opacity: 1;
+  }
 }
 
 .text-information{
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  padding: 0px 10px;
+  font-size: 1.5rem;
   position: absolute;
-  top: 0px;
-  display: none;
+  top: 20px;
+  left: 20px;
+  opacity: 0;
+  background-color: black;
+  h4,h5,p{
+    padding: 15px 0;
+  }
 }
 
 .poster-img{
   width: 100%;
   height: 400px;
-  &.poster-img:hover{
-    cursor: pointer;
-    opacity: 10%;
-    .text-information:hover{
-      display: block;
-    }
-  }
+}
+
+.fa-star{
+  color: rgb(242, 242, 40);
 }
 </style>
 
