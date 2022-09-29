@@ -2,8 +2,11 @@
   <header>
     <div></div>
     <div class="searchNavigation">
-        <input type="text" placeholder="Search Movies" v-model="insertText">
+      <h1>BOOLFLIX</h1>
+      <div class="searchbar">
+        <input type="text" placeholder="Search Movies" v-model="insertText" @keyup.enter="$emit('textToSearch', insertText)">
         <button @click="$emit('textToSearch', insertText)">Search</button>
+    </div>
     </div>
   </header>
 </template>
@@ -20,5 +23,26 @@ data(){
 </script>
 
 <style lang="scss" scoped>
-
+  header{
+    background-color: black;
+  }
+.searchNavigation{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1{
+    color: red;
+    padding: 0 15px;
+  };
+  input{
+    border: none;
+  };
+  button{
+    background-color: red;
+    border: none;
+  }
+}
+.searchbar{
+  padding: 0 15px;
+}
 </style>

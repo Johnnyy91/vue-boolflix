@@ -33,14 +33,12 @@ data(){
       axios
         .get(`https://api.themoviedb.org/3/search/movie?api_key=4f84838e7f72cd5486a3c0f5685cf054&language=it-IT&query=${this.resultInput}&page=1&include_adult=false`)
         .then((response) => {
-          console.log(response)
-          console.log(response.data.results)
+          console.log('movie',response.data.results)
           this.ArrayMovies = response.data.results
         })
         axios
           .get(`https://api.themoviedb.org/3/search/tv?api_key=4f84838e7f72cd5486a3c0f5685cf054&language=it-IT&query=${this.resultInput}&include_adult=false`)
           .then ((response) =>{
-            console.log('serie tv',response)
             console.log('serie tv',response.data.results)
             this.ArraySerieTv = response.data.results
           })
