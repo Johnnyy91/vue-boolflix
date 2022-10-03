@@ -24,7 +24,19 @@ data(){
   }
 },
   created(){
-   
+    axios
+      .get(`https://api.themoviedb.org/3/search/movie?api_key=4f84838e7f72cd5486a3c0f5685cf054&language=it-IT&query=${'Marvel'}&page=1&include_adult=false`)
+      .then((response) => {
+        console.log('movie', response)
+        console.log('movie', response.data.results)
+        this.ArrayMovies = response.data.results
+      })
+    axios
+      .get(`https://api.themoviedb.org/3/search/tv?api_key=4f84838e7f72cd5486a3c0f5685cf054&language=it-IT&query=${'Marvel'}&include_adult=false`)
+      .then((response) => {
+        console.log('serie tv', response.data.results)
+        this.ArraySerieTv = response.data.results
+      })
   },
   methods : {
     inputAssign(insertText){
@@ -36,6 +48,11 @@ data(){
           console.log('movie' , response)
           console.log('movie',response.data.results)
           this.ArrayMovies = response.data.results
+          for(let i=0 ; i< this.ArrayMovies.length ; i++){
+            const movie = this.ArrayMovies[i]
+            const id = movie.id
+            this.getActors(id , i)
+          }
         })
         axios
           .get(`https://api.themoviedb.org/3/search/tv?api_key=4f84838e7f72cd5486a3c0f5685cf054&language=it-IT&query=${this.resultInput}&include_adult=false`)
@@ -43,6 +60,15 @@ data(){
             console.log('serie tv',response.data.results)
             this.ArraySerieTv = response.data.results
           })
+    },
+    getActors(id , index){
+      axios
+        .get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=4f84838e7f72cd5486a3c0f5685cf054&language=it-IT&query=${this.resultInput}&include_adult=false`)
+        .then((response) => {
+          console.log('characters', response.data.cast)
+          this.ArrayMovies[index].credits = response
+        })
+
     }
   }
 }
@@ -60,3 +86,6 @@ data(){
 
 }
 </style>
+
+
+

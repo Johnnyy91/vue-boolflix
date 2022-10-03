@@ -23,7 +23,7 @@ data(){
 </script>
 
 <style lang="scss" scoped>
-  header{
+header{
     background-color: black;
   }
 .searchNavigation{
@@ -37,10 +37,12 @@ data(){
   };
   input{
     border: none;
+    font-size: 1.5rem
   };
   button{
     background-color: red;
     border: none;
+    font-size: 1.5rem
   }
 }
 .searchbar{

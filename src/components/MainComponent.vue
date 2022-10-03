@@ -102,6 +102,7 @@ h4{
   position: relative;
   &.card:hover .text-information{
     opacity: 1;
+    cursor: pointer;
   }
 }
 
@@ -109,14 +110,14 @@ h4{
   width: calc(100% - 40px);
   height: calc(100% - 40px);
   padding: 0px 10px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   position: absolute;
   top: 20px;
   left: 20px;
   opacity: 0;
   background-color: black;
   h4,h5,p{
-    padding: 15px 0;
+    padding: 10px 0;
   }
 }
 
